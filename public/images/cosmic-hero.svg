@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="nebulaCenter" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1F2F66" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#111B3A" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#080D24" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="goldGlow" cx="50%" cy="30%" r="35%">
+      <stop offset="0%" stop-color="#D6B56D" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#D6B56D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#nebulaCenter)"/>
+  <rect width="1920" height="1080" fill="url(#goldGlow)"/>
+
+  <!-- Constellations & Sacred Orbits -->
+  <g stroke="#D6B56D" stroke-opacity="0.15" fill="none">
+    <ellipse cx="960" cy="540" rx="700" ry="320" stroke-width="1.5" transform="rotate(-15 960 540)"/>
+    <ellipse cx="960" cy="540" rx="850" ry="400" stroke-width="1" stroke-dasharray="4,8" transform="rotate(10 960 540)"/>
+    <ellipse cx="960" cy="540" rx="500" ry="220" stroke-width="1.5" transform="rotate(-5 960 540)"/>
+    <circle cx="960" cy="540" r="300" stroke-width="1" stroke-dasharray="8,8"/>
+    <circle cx="960" cy="540" r="160" stroke-width="1.5"/>
+  </g>
+
+  <!-- Glowing Stars -->
+  <g fill="#FFFFFF">
+    <circle cx="200" cy="180" r="2" opacity="0.8"/>
+    <circle cx="450" cy="120" r="1.5" opacity="0.6"/>
+    <circle cx="820" cy="140" r="2.5" fill="#D6B56D" opacity="0.9"/>
+    <circle cx="1200" cy="200" r="2" opacity="0.7"/>
+    <circle cx="1600" cy="150" r="3" fill="#D6B56D" opacity="0.9"/>
+    <circle cx="1780" cy="320" r="1.5" opacity="0.5"/>
+    <circle cx="300" cy="750" r="2.5" fill="#D6B56D" opacity="0.8"/>
+    <circle cx="700" cy="850" r="1.5" opacity="0.6"/>
+    <circle cx="1300" cy="800" r="2" opacity="0.7"/>
+    <circle cx="1650" cy="720" r="2" fill="#D6B56D" opacity="0.8"/>
+    <circle cx="960" cy="920" r="3" fill="#D6B56D" opacity="0.9"/>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" width="900" height="1100">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D24"/>
+      <stop offset="60%" stop-color="#111B3A"/>
+      <stop offset="100%" stop-color="#0C1433"/>
+    </linearGradient>
+    <linearGradient id="gold2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E4B8"/>
+      <stop offset="50%" stop-color="#D6B56D"/>
+      <stop offset="100%" stop-color="#A48238"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="1100" fill="url(#bgGrad2)"/>
+  <rect x="30" y="30" width="840" height="1040" rx="16" fill="none" stroke="url(#gold2)" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- Celestial Astrolabe Wheel -->
+  <g transform="translate(450, 420)">
+    <circle cx="0" cy="0" r="280" fill="none" stroke="url(#gold2)" stroke-width="2" stroke-opacity="0.3"/>
+    <circle cx="0" cy="0" r="240" fill="none" stroke="url(#gold2)" stroke-width="1" stroke-dasharray="6,6" stroke-opacity="0.4"/>
+    <circle cx="0" cy="0" r="180" fill="#0C1433" stroke="url(#gold2)" stroke-width="1.5"/>
+
+    <!-- Zodiac Constellation Nodes -->
+    <circle cx="240" cy="0" r="4" fill="#D6B56D"/>
+    <circle cx="208" cy="120" r="4" fill="#D6B56D"/>
+    <circle cx="120" cy="208" r="4" fill="#D6B56D"/>
+    <circle cx="0" cy="240" r="4" fill="#D6B56D"/>
+    <circle cx="-120" cy="208" r="4" fill="#D6B56D"/>
+    <circle cx="-208" cy="120" r="4" fill="#D6B56D"/>
+    <circle cx="-240" cy="0" r="4" fill="#D6B56D"/>
+    <circle cx="-208" cy="-120" r="4" fill="#D6B56D"/>
+    <circle cx="-120" cy="-208" r="4" fill="#D6B56D"/>
+    <circle cx="0" cy="-240" r="4" fill="#D6B56D"/>
+    <circle cx="120" cy="-208" r="4" fill="#D6B56D"/>
+    <circle cx="208" cy="-120" r="4" fill="#D6B56D"/>
+
+    <!-- Inner Jyotish Diamond Grid (North Indian Kundli Chart) -->
+    <rect x="-110" y="-110" width="220" height="220" fill="none" stroke="url(#gold2)" stroke-width="1.5"/>
+    <line x1="-110" y1="-110" x2="110" y2="110" stroke="url(#gold2)" stroke-width="1"/>
+    <line x1="-110" y1="110" x2="110" y2="-110" stroke="url(#gold2)" stroke-width="1"/>
+    <polygon points="0,-110 110,0 0,110 -110,0" fill="none" stroke="url(#gold2)" stroke-width="1.5"/>
+
+    <!-- Central Symbol -->
+    <text x="0" y="8" font-family="'Cinzel', serif" font-size="22" font-weight="700" fill="url(#gold2)" text-anchor="middle">ॐ</text>
+  </g>
+
+  <!-- Bio Plaque -->
+  <rect x="100" y="780" width="700" height="240" rx="16" fill="#080D24" stroke="url(#gold2)" stroke-width="1"/>
+  <text x="450" y="835" font-family="'Cinzel', serif" font-size="28" font-weight="700" fill="url(#gold2)" text-anchor="middle" letter-spacing="3">PANDIT PUNEET DWIVEDI</text>
+  <text x="450" y="870" font-family="'Montserrat', sans-serif" font-size="14" fill="#F5F0E6" text-anchor="middle" letter-spacing="2">VEDIC JYOTISH &amp; LIFE COUNSELOR</text>
+  <text x="450" y="905" font-family="'Inter', sans-serif" font-size="14" fill="#8F9CAE" text-anchor="middle">15+ Years of Dedicated Classical Practice • Mumbai, India</text>
+  <text x="450" y="940" font-family="'Inter', sans-serif" font-size="13" fill="#D6B56D" text-anchor="middle">Parashari • Jaimini • Prashna Kundli • Graha Shanti Vidhan</text>
+  <text x="450" y="980" font-family="'Inter', sans-serif" font-size="12" fill="#64748B" text-anchor="middle">Verified Official Astrologer Profile • Confidential &amp; Ethical Counsel</text>
+</svg>
