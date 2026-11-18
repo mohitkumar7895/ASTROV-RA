@@ -13,6 +13,7 @@ import {
   Eye,
 } from 'lucide-react';
 import { HeroSection, AstrologerProfile, PageContent } from '@/types';
+import { ImageUpload } from '@/components/admin/ImageUpload';
 
 interface ContentProps {
   initialHero: HeroSection | null;
@@ -285,16 +286,23 @@ export function ContentManagerClient({
               />
             </div>
 
-            <div className="sm:col-span-2">
-              <label className="block text-xs font-accent uppercase tracking-wider text-astro-slate mb-2">
-                Astrologer Portrait Image URL (or path in /images/ or /uploads/)
-              </label>
-              <input
-                type="text"
+            <div className="sm:col-span-2 space-y-5 pt-3 border-t border-astro-border/40">
+              <ImageUpload
+                label="Astrologer Hero Portrait Image"
                 value={hero.astrologer_image_url || ''}
-                onChange={(e) => setHero({ ...hero, astrologer_image_url: e.target.value })}
-                placeholder="/images/astrologer-portrait.jpg"
-                className="w-full px-4 py-3 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
+                onChange={(url) => setHero({ ...hero, astrologer_image_url: url })}
+                helperText="Upload or choose portrait of Puneet Dwivedi for the Hero Section"
+                category="hero"
+                aspectRatio="portrait"
+              />
+
+              <ImageUpload
+                label="Hero Cosmic Galaxy Background"
+                value={hero.hero_image_url || ''}
+                onChange={(url) => setHero({ ...hero, hero_image_url: url })}
+                helperText="Upload or select cosmic universe/galaxy background artwork"
+                category="hero"
+                aspectRatio="video"
               />
             </div>
           </div>
@@ -465,6 +473,17 @@ export function ContentManagerClient({
                 value={profile.ethics_pledge || ''}
                 onChange={(e) => setProfile({ ...profile, ethics_pledge: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
+              />
+            </div>
+
+            <div className="sm:col-span-2 pt-3 border-t border-astro-border/40">
+              <ImageUpload
+                label="Astrologer Biography Portrait (About Page & Bio Preview)"
+                value={profile.portrait_image_url || ''}
+                onChange={(url) => setProfile({ ...profile, portrait_image_url: url })}
+                helperText="Upload or choose portrait of Puneet Dwivedi for the About Astrologer page"
+                category="profile"
+                aspectRatio="portrait"
               />
             </div>
           </div>

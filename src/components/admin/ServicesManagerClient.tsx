@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { AstrologyService } from '@/types';
 import { formatCurrency } from '@/lib/utils';
+import { ImageUpload } from '@/components/admin/ImageUpload';
 
 interface Props {
   initialServices: AstrologyService[];
@@ -356,6 +357,18 @@ export function ServicesManagerClient({ initialServices }: Props) {
                   value={editingService?.description || ''}
                   onChange={(e) => setEditingService({ ...editingService, description: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
+                />
+              </div>
+
+              {/* Service Image Upload & Media Library Selector */}
+              <div>
+                <ImageUpload
+                  label="Service Cover Image"
+                  value={editingService?.image_url || ''}
+                  onChange={(url) => setEditingService({ ...editingService, image_url: url })}
+                  helperText="Upload a new image from your device or choose from the Media Library"
+                  category="services"
+                  aspectRatio="video"
                 />
               </div>
 

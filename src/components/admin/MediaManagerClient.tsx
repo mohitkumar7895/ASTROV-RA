@@ -122,6 +122,39 @@ export function MediaManagerClient({ initialItems }: Props) {
         </label>
       </div>
 
+      {/* Drag & Drop Quick Upload Zone */}
+      <div className="relative rounded-2xl border-2 border-dashed border-astro-border/70 hover:border-astro-gold/60 bg-astro-navy/40 hover:bg-astro-navy/60 p-6 sm:p-8 text-center transition-all">
+        <input
+          type="file"
+          accept="image/png,image/jpeg,image/webp,image/svg+xml"
+          onChange={handleFileUpload}
+          disabled={isUploading}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+          id="drag-drop-upload"
+        />
+        <div className="flex flex-col items-center justify-center pointer-events-none">
+          {isUploading ? (
+            <>
+              <Loader2 className="w-10 h-10 text-astro-gold animate-spin mb-3" />
+              <p className="font-heading text-base font-bold text-astro-gold">Uploading Image to Media Library...</p>
+              <p className="text-xs text-astro-slate mt-1 font-body">Processing image bytes and generating storage URL...</p>
+            </>
+          ) : (
+            <>
+              <div className="w-12 h-12 rounded-full bg-astro-midnight border border-astro-gold/50 flex items-center justify-center text-astro-gold mb-3 shadow-goldGlow">
+                <Upload className="w-6 h-6 text-astro-gold" />
+              </div>
+              <p className="font-heading text-base font-bold text-astro-ivory">
+                Drag &amp; Drop Images Here, or <span className="text-astro-gold underline">Browse Files</span>
+              </p>
+              <p className="text-xs text-astro-slate mt-1 font-body">
+                Supports JPG, PNG, WEBP, and SVG formats up to 5MB. Auto-saved to public uploads.
+              </p>
+            </>
+          )}
+        </div>
+      </div>
+
       {/* Search & Filter Bar */}
       <div className="p-4 rounded-2xl bg-astro-navy/60 border border-astro-border flex items-center gap-3">
         <Search className="w-4 h-4 text-astro-slate shrink-0" />
