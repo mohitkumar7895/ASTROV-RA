@@ -158,34 +158,86 @@ export async function updateAstrologerProfile(data: Partial<AstrologerProfile>):
 // ==========================================
 // 4. SERVICES
 // ==========================================
+export const VEDIC_CLASSES_SERVICE: AstrologyService = {
+  id: 9,
+  slug: 'astrology-education-classes',
+  title: 'Vedic Astrology & Scripture Masterclasses',
+  short_description: 'Learn Kundli reading, 9 Navagrahas, 12 Rashis, 27 Nakshatras, 12 Bhavas, and Bhagavad Gita wisdom. Professional online classes. Limited seats.',
+  description: 'Pandit Puneet Dwivedi teaches comprehensive Vedic Astrology and Hindu spiritual scriptures to dedicated students worldwide. Master Kundli reading, planetary dasha cycles, 12 houses (Bhavas), 9 Navagrahas, 27 Nakshatras, alongside deep wisdom from Shrimad Bhagavad Gita (Karma, Bhakti & Jnana Yoga), Bhagavata Purana, Shiva Purana, and Vishnu Purana. Conducted professionally online in small batches with personal attention. Hurry up – seats are strictly limited per cohort. Inquire for fee structure and batch timings.',
+  icon: 'Sparkles',
+  image_url: '/images/puneet-dwivedi-meditation.jpg',
+  price: 0,
+  currency: 'INR',
+  duration_minutes: 60,
+  consultation_method: 'Professional Online Classes (Live Interactive)',
+  display_order: 9,
+  is_active: 1,
+  is_featured: 1,
+  created_at: '2026-11-19T10:44:02.000Z',
+  updated_at: '2026-11-19T10:44:02.000Z',
+};
+
 export async function getActiveServices(): Promise<AstrologyService[]> {
-  const rows = await query<RowDataPacket[]>(
-    'SELECT * FROM services WHERE is_active = 1 ORDER BY display_order ASC, id ASC'
-  );
-  return rows as AstrologyService[];
+  try {
+    const rows = await query<RowDataPacket[]>(
+      'SELECT * FROM services WHERE is_active = 1 ORDER BY display_order ASC, id ASC'
+    );
+    const list = rows as AstrologyService[];
+    if (!list.some((s) => s.slug === 'astrology-education-classes')) {
+      list.push(VEDIC_CLASSES_SERVICE);
+    }
+    return list;
+  } catch (err) {
+    console.error('Error in getActiveServices:', err);
+    return [VEDIC_CLASSES_SERVICE];
+  }
 }
 
 export async function getFeaturedServices(): Promise<AstrologyService[]> {
-  const rows = await query<RowDataPacket[]>(
-    'SELECT * FROM services WHERE is_active = 1 AND is_featured = 1 ORDER BY display_order ASC, id ASC'
-  );
-  return rows as AstrologyService[];
+  try {
+    const rows = await query<RowDataPacket[]>(
+      'SELECT * FROM services WHERE is_active = 1 AND is_featured = 1 ORDER BY display_order ASC, id ASC'
+    );
+    const list = rows as AstrologyService[];
+    if (!list.some((s) => s.slug === 'astrology-education-classes')) {
+      list.push(VEDIC_CLASSES_SERVICE);
+    }
+    return list;
+  } catch (err) {
+    console.error('Error in getFeaturedServices:', err);
+    return [VEDIC_CLASSES_SERVICE];
+  }
 }
 
 export async function getAllServices(): Promise<AstrologyService[]> {
-  const rows = await query<RowDataPacket[]>(
-    'SELECT * FROM services ORDER BY display_order ASC, id ASC'
-  );
-  return rows as AstrologyService[];
+  try {
+    const rows = await query<RowDataPacket[]>(
+      'SELECT * FROM services ORDER BY display_order ASC, id ASC'
+    );
+    const list = rows as AstrologyService[];
+    if (!list.some((s) => s.slug === 'astrology-education-classes')) {
+      list.push(VEDIC_CLASSES_SERVICE);
+    }
+    return list;
+  } catch (err) {
+    console.error('Error in getAllServices:', err);
+    return [VEDIC_CLASSES_SERVICE];
+  }
 }
 
 export async function getServiceBySlug(slug: string): Promise<AstrologyService | null> {
-  const rows = await query<RowDataPacket[]>(
-    'SELECT * FROM services WHERE slug = ? LIMIT 1',
-    [slug]
-  );
-  if (!rows || rows.length === 0) return null;
-  return rows[0] as AstrologyService;
+  try {
+    const rows = await query<RowDataPacket[]>(
+      'SELECT * FROM services WHERE slug = ? LIMIT 1',
+      [slug]
+    );
+    if (rows && rows.length > 0) return rows[0] as AstrologyService;
+    if (slug === 'astrology-education-classes') return VEDIC_CLASSES_SERVICE;
+    return null;
+  } catch (err) {
+    if (slug === 'astrology-education-classes') return VEDIC_CLASSES_SERVICE;
+    return null;
+  }
 }
 
 export async function createService(data: Omit<AstrologyService, 'id' | 'created_at' | 'updated_at'>): Promise<number> {
