@@ -162,7 +162,7 @@ export function ServicesClient({ services = [] }: { services: AstrologyService[]
                       </div>
                       {Boolean(service.is_featured) && (
                         <span className="absolute top-2.5 sm:top-3 right-2.5 sm:right-3 px-2.5 sm:px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-accent font-semibold tracking-wider uppercase text-astro-midnight bg-gold-gradient shadow-md">
-                          Popular
+                          {service.slug === 'astrology-education-classes' ? '⚡ Limited Seats' : 'Popular'}
                         </span>
                       )}
                     </div>
@@ -206,8 +206,10 @@ export function ServicesClient({ services = [] }: { services: AstrologyService[]
                     <span className="text-[10px] uppercase tracking-wider text-astro-slate block font-accent">
                       Honorarium
                     </span>
-                    <span className="font-heading text-lg sm:text-2xl font-bold text-astro-gold">
-                      {formatCurrency(service.price, service.currency)}
+                    <span className="font-heading text-base sm:text-xl font-bold text-astro-gold">
+                      {Number(service.price) > 0
+                        ? formatCurrency(service.price, service.currency)
+                        : 'Inquire for Fees'}
                     </span>
                   </div>
 
@@ -215,7 +217,7 @@ export function ServicesClient({ services = [] }: { services: AstrologyService[]
                     onClick={() => openBookingForService(service.id, service.title)}
                     className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-accent font-semibold tracking-wider uppercase text-astro-midnight bg-gold-gradient shadow-sm hover:shadow-goldGlow hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
                   >
-                    <span>Book Slot</span>
+                    <span>{Number(service.price) > 0 ? 'Book Slot' : 'Enquire Fees'}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
