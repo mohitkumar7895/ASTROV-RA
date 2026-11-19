@@ -13,10 +13,11 @@ import {
   Sparkles,
   Phone,
   MessageCircle,
+  GraduationCap,
 } from 'lucide-react';
 import { getAstrologerProfile, getSeoMetadata } from '@/lib/queries';
 import { SectionHeader } from '@/components/common/SectionHeader';
-import { getAstrologerWhatsApp } from '@/lib/whatsapp';
+import { getAstrologerWhatsApp, getClassesWhatsAppUrl } from '@/lib/whatsapp';
 
 export const revalidate = 0;
 
@@ -71,6 +72,7 @@ export default async function AboutPage() {
       ];
 
   const whatsappUrl = getAstrologerWhatsApp();
+  const classesWhatsappUrl = getClassesWhatsAppUrl();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-12">
@@ -158,6 +160,110 @@ export default async function AboutPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+
+          {/* Vedic Astrology Educator & Spiritual Guide Section */}
+          <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#0F1738] to-[#0A0F26] border-2 border-astro-gold/60 p-4 sm:p-8 lg:p-10 shadow-goldGlow overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-astro-gold/30">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-astro-midnight border border-astro-gold text-astro-gold text-[10px] sm:text-xs font-accent tracking-widest uppercase font-semibold">
+                <GraduationCap className="w-3.5 h-3.5" />
+                <span>Vedic Guru &amp; Spiritual Educator</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-300 text-[10px] sm:text-xs font-accent font-semibold animate-pulse">
+                <span>⚡ HURRY UP! LIMITED SEATS PER BATCH</span>
+              </div>
+            </div>
+
+            <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mb-2">
+              Teaching Vedic Astrology &amp; Sacred Hindu Scriptures
+            </h3>
+
+            <p className="text-xs sm:text-base text-[#E2E8F0] font-body leading-relaxed mb-6">
+              Beyond individual consultations, Pandit Puneet Dwivedi is dedicated to preserving and imparting sacred Sanatan knowledge. Through structured, professional online classes, students worldwide receive authentic, unadulterated wisdom directly from the source.
+            </p>
+
+            {/* 3 Pillars Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {/* Pillar 1: Vedic Astrology Education */}
+              <div className="rounded-xl bg-[#080D24] border border-astro-border p-4">
+                <h4 className="font-heading text-sm font-bold text-astro-gold flex items-center gap-1.5 mb-2">
+                  <Compass className="w-4 h-4 text-astro-gold" />
+                  <span>Vedic Astrology Education</span>
+                </h4>
+                <ul className="text-xs text-[#CBD5E1] space-y-1.5 font-body">
+                  <li>• <strong>Kundli Reading:</strong> Chart decoding</li>
+                  <li>• <strong>Navagraha:</strong> 9 Planets &amp; Avasthas</li>
+                  <li>• <strong>12 Rashis &amp; 12 Bhavas:</strong> Signs &amp; Houses</li>
+                  <li>• <strong>27 Nakshatras:</strong> Lunar Mansions</li>
+                  <li>• <strong>Jyotish Shastra:</strong> Classical principles</li>
+                </ul>
+              </div>
+
+              {/* Pillar 2: Hindu Scriptures & Puranas */}
+              <div className="rounded-xl bg-[#080D24] border border-astro-border p-4">
+                <h4 className="font-heading text-sm font-bold text-astro-gold flex items-center gap-1.5 mb-2">
+                  <BookOpen className="w-4 h-4 text-astro-gold" />
+                  <span>Scriptures &amp; Puranas</span>
+                </h4>
+                <ul className="text-xs text-[#CBD5E1] space-y-1.5 font-body">
+                  <li>• <strong>Shrimad Bhagavata Purana:</strong> Leelas &amp; Bhakti</li>
+                  <li>• <strong>Shiva Purana:</strong> Shiva Tattva &amp; Dhyan</li>
+                  <li>• <strong>Vishnu Purana:</strong> Cosmic Order &amp; Avatars</li>
+                  <li>• <strong>Hindu Dharma:</strong> Vedic rituals &amp; Sanskaras</li>
+                  <li>• <strong>Ancient Indian Philosophy:</strong> Upanishads</li>
+                </ul>
+              </div>
+
+              {/* Pillar 3: Bhagavad Gita Teachings */}
+              <div className="rounded-xl bg-[#080D24] border border-astro-border p-4">
+                <h4 className="font-heading text-sm font-bold text-astro-gold flex items-center gap-1.5 mb-2">
+                  <Sparkles className="w-4 h-4 text-astro-gold" />
+                  <span>Bhagavad Gita Teachings</span>
+                </h4>
+                <ul className="text-xs text-[#CBD5E1] space-y-1.5 font-body">
+                  <li>• <strong>Karma Yoga:</strong> Right action without anxiety</li>
+                  <li>• <strong>Bhakti Yoga:</strong> Devotion &amp; inner surrender</li>
+                  <li>• <strong>Jnana Yoga:</strong> Discernment &amp; higher truth</li>
+                  <li>• <strong>Dharma &amp; Duties:</strong> Moral life leadership</li>
+                  <li>• <strong>Self-Realisation:</strong> Spiritual awakening</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Meditative Photo & Admission Box */}
+            <div className="rounded-xl bg-[#080D24] border border-astro-gold/40 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-astro-gold">
+                  <Image
+                    src="/images/puneet-dwivedi-meditation.jpg"
+                    alt="Pandit Puneet Dwivedi in Dhyan Meditation"
+                    fill
+                    className="object-cover object-top"
+                    sizes="80px"
+                  />
+                </div>
+                <div>
+                  <h5 className="font-heading text-sm sm:text-base font-bold text-white">
+                    100% Professional Online Live Classes
+                  </h5>
+                  <p className="text-xs text-[#CBD5E1] font-body mt-0.5">
+                    Interactive Zoom / Google Meet batches. Inquire for fees and reserved seats.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5 w-full sm:w-auto shrink-0">
+                <a
+                  href={classesWhatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-accent font-bold tracking-wider uppercase text-white bg-[#25D366] hover:bg-[#20BA5A] shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                  <span>Enquire About Classes</span>
+                </a>
+              </div>
             </div>
           </div>
 

@@ -106,6 +106,15 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-2 border-t border-astro-border/40">
+                <Link
+                  href="/#vedic-education"
+                  className="text-astro-gold hover:text-astro-goldLight transition-colors text-xs font-accent font-bold flex items-center gap-1.5"
+                >
+                  <span className="text-amber-400">⚡</span>
+                  <span>Vedic Classes &amp; Scriptures (Gurukul)</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -8,6 +8,7 @@ import {
 } from '@/lib/queries';
 import { HeroSection } from '@/components/home/HeroSection';
 import { AboutPreview } from '@/components/home/AboutPreview';
+import { VedicEducationSection } from '@/components/home/VedicEducationSection';
 import { FeaturedServices } from '@/components/home/FeaturedServices';
 import { WhyChooseUs } from '@/components/home/WhyChooseUs';
 import { ProblemsPreview } from '@/components/home/ProblemsPreview';
@@ -33,7 +34,10 @@ export default async function HomePage() {
       {/* 2. About Preview */}
       <AboutPreview profile={profile} />
 
-      {/* 3. Featured Services */}
+      {/* 3. Vedic Astrology & Sacred Scripture Masterclasses (Gurukul) */}
+      <VedicEducationSection />
+
+      {/* 4. Featured Services */}
       <FeaturedServices services={services} />
 
       {/* 4. Why Choose Us */}

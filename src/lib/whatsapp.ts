@@ -23,3 +23,9 @@ export function getClientWhatsAppLink(phone: string, clientName: string, booking
   const message = `Namaste ${clientName}, this is from ASTROVÈRA regarding your consultation enquiry #${bookingRef} (${serviceName || 'Astrology Consultation'}). We would like to confirm your preferred time slot.`;
   return buildWhatsAppLink(phone, message);
 }
+
+export function getClassesWhatsAppUrl(): string {
+  const astrologerNumber = '919630620240';
+  const message = 'Namaste Pandit Puneet Dwivedi Ji, I want to learn Vedic Astrology and Hindu Scriptures from you. Please share details about the online classes, syllabus (Kundli, Navagrahas, Bhagavad Gita, Puranas), batch schedule, and fee structure.';
+  return buildWhatsAppLink(astrologerNumber, message);
+}
