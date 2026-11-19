@@ -20,10 +20,12 @@ import {
   CheckCircle,
   FileText,
   ShieldCheck,
+  MessageCircle,
 } from 'lucide-react';
 import { AstrologyService } from '@/types';
 import { formatCurrency } from '@/lib/utils';
 import { useBooking } from '@/context/BookingContext';
+import { getClassesWhatsAppUrl } from '@/lib/whatsapp';
 
 const iconMap: Record<string, React.ElementType> = {
   Compass,
@@ -213,13 +215,27 @@ export function ServicesClient({ services = [] }: { services: AstrologyService[]
                     </span>
                   </div>
 
-                  <button
-                    onClick={() => openBookingForService(service.id, service.title)}
-                    className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-accent font-semibold tracking-wider uppercase text-astro-midnight bg-gold-gradient shadow-sm hover:shadow-goldGlow hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
-                  >
-                    <span>{Number(service.price) > 0 ? 'Book Slot' : 'Enquire Fees'}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    {service.slug === 'astrology-education-classes' && (
+                      <a
+                        href={getClassesWhatsAppUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-2 rounded-full text-xs font-accent font-semibold tracking-wider text-white bg-[#25D366] hover:bg-[#20BA5A] shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                        title="Enquire on WhatsApp"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                        <span className="hidden xs:inline">WhatsApp</span>
+                      </a>
+                    )}
+                    <button
+                      onClick={() => openBookingForService(service.id, service.title)}
+                      className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-accent font-semibold tracking-wider uppercase text-astro-midnight bg-gold-gradient shadow-sm hover:shadow-goldGlow hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                    >
+                      <span>{Number(service.price) > 0 ? 'Book Slot' : 'Enquire Fees'}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             );

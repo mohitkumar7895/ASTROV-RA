@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { getActiveServices, getSeoMetadata } from '@/lib/queries';
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { ServicesClient } from '@/components/services/ServicesClient';
+import { VedicEducationSection } from '@/components/home/VedicEducationSection';
 
 export const revalidate = 0; // Dynamic server rendering
 
@@ -30,6 +31,11 @@ export default async function ServicesPage() {
         title="Astrology Consultations &amp; Vidhan"
         subtitle="Every service is conducted personally by Puneet Dwivedi with meticulous mathematical precision and complete confidentiality."
       />
+
+      {/* Featured Highlight: Vedic Astrology Education & Sacred Scriptures Masterclasses */}
+      <div className="mt-6 sm:mt-10 mb-8 sm:mb-14 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-astro-gold/50 shadow-goldGlow">
+        <VedicEducationSection />
+      </div>
 
       <ServicesClient services={services} />
     </div>
