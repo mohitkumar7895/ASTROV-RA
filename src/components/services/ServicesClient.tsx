@@ -21,6 +21,7 @@ import {
   FileText,
   ShieldCheck,
   MessageCircle,
+  Hand,
 } from 'lucide-react';
 import { AstrologyService } from '@/types';
 import { formatCurrency } from '@/lib/utils';
@@ -37,6 +38,7 @@ const iconMap: Record<string, React.ElementType> = {
   MessageSquare,
   Flame,
   Sparkles,
+  Hand,
 };
 
 const consultationSteps = [

@@ -69,7 +69,7 @@ export function ProblemsPreview({ categories = [] }: { categories: ProblemCatego
                   </div>
 
                   <ul className="space-y-2.5 sm:space-y-4">
-                    {(category.questions || []).slice(0, 3).map((q) => (
+                    {(category.questions || []).slice(0, 4).map((q) => (
                       <li
                         key={q.id}
                         className="p-2.5 sm:p-3.5 rounded-xl bg-[#080D24] border border-astro-border/50 hover:border-astro-gold/50 transition-all flex flex-col justify-between group"

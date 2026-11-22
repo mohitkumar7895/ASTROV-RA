@@ -18,6 +18,7 @@ import {
   Clock,
   Video,
   MessageCircle,
+  Hand,
 } from 'lucide-react';
 import { AstrologyService } from '@/types';
 import { SectionHeader } from '@/components/common/SectionHeader';
@@ -35,6 +36,7 @@ const iconMap: Record<string, React.ElementType> = {
   MessageSquare,
   Flame,
   Sparkles,
+  Hand,
 };
 
 export function FeaturedServices({ services = [] }: { services: AstrologyService[] }) {

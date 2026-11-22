@@ -66,6 +66,7 @@ export default async function AboutPage() {
     : [
         'Vedic Birth Chart Analysis',
         'Career Crossroads & Executive Direction',
+        'Astro-Palmistry & Hand Reading (Hastarekha Shastra)',
         'Matchmaking & Marriage Harmony',
         'Child Education & Stream Selection',
         'Graha Shanti, Puja & Spiritual Vidhan',

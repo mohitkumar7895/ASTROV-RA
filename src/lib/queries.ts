@@ -177,19 +177,58 @@ export const VEDIC_CLASSES_SERVICE: AstrologyService = {
   updated_at: '2026-11-19T10:44:02.000Z',
 };
 
+export const ASTRO_PALMISTRY_SERVICE: AstrologyService = {
+  id: 10,
+  slug: 'astro-palmistry-hand-reading',
+  title: 'Astro-Palmistry & Hand Reading (Hastarekha)',
+  short_description: 'Discover your destiny, lifespan, career, wealth, and relationship lines through classical Vedic Hastarekha Shastra.',
+  description: 'Pandit Puneet Dwivedi evaluates the sacred lines, mounts (Parvatas), signs, and planetary markings of your palms. Astro-Palmistry (Hastarekha Shastra) acts as a living birth chart on your hands, offering invaluable life foresight even without accurate birth time. Gain deep clarity on career lines, Sun line, heart line, life vitality, and marriage lines.',
+  icon: 'Hand',
+  image_url: '/images/service-kundli.jpg',
+  price: 2100,
+  currency: 'INR',
+  duration_minutes: 45,
+  consultation_method: 'Hand Photo Analysis & Live Video/Audio Call',
+  display_order: 5,
+  is_active: 1,
+  is_featured: 1,
+  created_at: '2026-11-22T08:00:00.000Z',
+  updated_at: '2026-11-22T08:00:00.000Z',
+};
+
+export const PALMISTRY_QUESTION: ProblemQuestion = {
+  id: 13,
+  category_id: 3,
+  service_id: 10,
+  question: 'Want to know what your future is just by showing your hand ?',
+  description: 'Decode your life path, destiny lines, wealth mounts, and relationship future through sacred Vedic Astro-Palmistry by simply sharing clear photos of your palms.',
+  inquiry_btn_label: 'Inquiry',
+  display_order: 5,
+  is_active: 1,
+  service_title: 'Astro-Palmistry & Hand Reading (Hastarekha)',
+  created_at: '2026-11-22T08:00:00.000Z',
+  updated_at: '2026-11-22T08:00:00.000Z',
+};
+
+function ensureCoreServices(list: AstrologyService[]): AstrologyService[] {
+  if (!list.some((s) => s.slug === 'astrology-education-classes')) {
+    list.push(VEDIC_CLASSES_SERVICE);
+  }
+  if (!list.some((s) => s.slug === 'astro-palmistry-hand-reading')) {
+    list.splice(4, 0, ASTRO_PALMISTRY_SERVICE);
+  }
+  return list;
+}
+
 export async function getActiveServices(): Promise<AstrologyService[]> {
   try {
     const rows = await query<RowDataPacket[]>(
       'SELECT * FROM services WHERE is_active = 1 ORDER BY display_order ASC, id ASC'
     );
-    const list = rows as AstrologyService[];
-    if (!list.some((s) => s.slug === 'astrology-education-classes')) {
-      list.push(VEDIC_CLASSES_SERVICE);
-    }
-    return list;
+    return ensureCoreServices(rows as AstrologyService[]);
   } catch (err) {
     console.error('Error in getActiveServices:', err);
-    return [VEDIC_CLASSES_SERVICE];
+    return [ASTRO_PALMISTRY_SERVICE, VEDIC_CLASSES_SERVICE];
   }
 }
 
@@ -198,14 +237,10 @@ export async function getFeaturedServices(): Promise<AstrologyService[]> {
     const rows = await query<RowDataPacket[]>(
       'SELECT * FROM services WHERE is_active = 1 AND is_featured = 1 ORDER BY display_order ASC, id ASC'
     );
-    const list = rows as AstrologyService[];
-    if (!list.some((s) => s.slug === 'astrology-education-classes')) {
-      list.push(VEDIC_CLASSES_SERVICE);
-    }
-    return list;
+    return ensureCoreServices(rows as AstrologyService[]);
   } catch (err) {
     console.error('Error in getFeaturedServices:', err);
-    return [VEDIC_CLASSES_SERVICE];
+    return [ASTRO_PALMISTRY_SERVICE, VEDIC_CLASSES_SERVICE];
   }
 }
 
@@ -214,14 +249,10 @@ export async function getAllServices(): Promise<AstrologyService[]> {
     const rows = await query<RowDataPacket[]>(
       'SELECT * FROM services ORDER BY display_order ASC, id ASC'
     );
-    const list = rows as AstrologyService[];
-    if (!list.some((s) => s.slug === 'astrology-education-classes')) {
-      list.push(VEDIC_CLASSES_SERVICE);
-    }
-    return list;
+    return ensureCoreServices(rows as AstrologyService[]);
   } catch (err) {
     console.error('Error in getAllServices:', err);
-    return [VEDIC_CLASSES_SERVICE];
+    return [ASTRO_PALMISTRY_SERVICE, VEDIC_CLASSES_SERVICE];
   }
 }
 
@@ -233,9 +264,11 @@ export async function getServiceBySlug(slug: string): Promise<AstrologyService |
     );
     if (rows && rows.length > 0) return rows[0] as AstrologyService;
     if (slug === 'astrology-education-classes') return VEDIC_CLASSES_SERVICE;
+    if (slug === 'astro-palmistry-hand-reading') return ASTRO_PALMISTRY_SERVICE;
     return null;
   } catch (err) {
     if (slug === 'astrology-education-classes') return VEDIC_CLASSES_SERVICE;
+    if (slug === 'astro-palmistry-hand-reading') return ASTRO_PALMISTRY_SERVICE;
     return null;
   }
 }
@@ -307,24 +340,35 @@ export async function deleteService(id: number): Promise<void> {
 // 5. PROBLEM CATEGORIES & QUESTIONS
 // ==========================================
 export async function getProblemCategoriesWithQuestions(): Promise<ProblemCategory[]> {
-  const catRows = await query<RowDataPacket[]>(
-    'SELECT * FROM problem_categories WHERE is_active = 1 ORDER BY display_order ASC, id ASC'
-  );
+  try {
+    const catRows = await query<RowDataPacket[]>(
+      'SELECT * FROM problem_categories WHERE is_active = 1 ORDER BY display_order ASC, id ASC'
+    );
 
-  const questRows = await query<RowDataPacket[]>(
-    `SELECT pq.*, s.title as service_title
-     FROM problem_questions pq
-     LEFT JOIN services s ON pq.service_id = s.id
-     WHERE pq.is_active = 1
-     ORDER BY pq.display_order ASC, pq.id ASC`
-  );
+    const questRows = await query<RowDataPacket[]>(
+      `SELECT pq.*, s.title as service_title
+       FROM problem_questions pq
+       LEFT JOIN services s ON pq.service_id = s.id
+       WHERE pq.is_active = 1
+       ORDER BY pq.display_order ASC, pq.id ASC`
+    );
 
-  const categories: ProblemCategory[] = catRows.map((cat) => ({
-    ...cat,
-    questions: questRows.filter((q) => q.category_id === cat.id) as ProblemQuestion[],
-  })) as ProblemCategory[];
+    const categories: ProblemCategory[] = catRows.map((cat) => {
+      const questions = questRows.filter((q) => q.category_id === cat.id) as ProblemQuestion[];
+      if ((cat.id === 3 || cat.slug === 'life-problems') && !questions.some((q) => q.question.toLowerCase().includes('showing your hand'))) {
+        questions.splice(3, 0, PALMISTRY_QUESTION);
+      }
+      return {
+        ...cat,
+        questions,
+      };
+    }) as ProblemCategory[];
 
-  return categories;
+    return categories;
+  } catch (err) {
+    console.error('Error in getProblemCategoriesWithQuestions:', err);
+    return [];
+  }
 }
 
 export async function getAllProblemCategories(): Promise<ProblemCategory[]> {
