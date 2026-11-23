@@ -22,7 +22,6 @@ import {
 } from 'lucide-react';
 import { AstrologyService } from '@/types';
 import { SectionHeader } from '@/components/common/SectionHeader';
-import { formatCurrency } from '@/lib/utils';
 import { useBooking } from '@/context/BookingContext';
 import { getClassesWhatsAppUrl } from '@/lib/whatsapp';
 
@@ -131,40 +130,27 @@ export function FeaturedServices({ services = [] }: { services: AstrologyService
                   </div>
                 </div>
 
-                {/* Bottom Pricing & CTA */}
-                <div className="mt-4 sm:mt-8 pt-3 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-astro-slate block font-accent">
-                      Honorarium
-                    </span>
-                    <span className="font-heading text-base sm:text-lg font-bold text-astro-gold">
-                      {Number(service.price) > 0
-                        ? formatCurrency(service.price, service.currency)
-                        : 'Inquire for Fees'}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    {service.slug === 'astrology-education-classes' && (
-                      <a
-                        href={getClassesWhatsAppUrl()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-2 rounded-full text-xs font-accent font-semibold tracking-wider text-white bg-[#25D366] hover:bg-[#20BA5A] shadow-md hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
-                        title="Enquire on WhatsApp"
-                      >
-                        <MessageCircle className="w-3.5 h-3.5 fill-white" />
-                        <span className="hidden xs:inline">WhatsApp</span>
-                      </a>
-                    )}
-                    <button
-                      onClick={() => openBookingForService(service.id, service.title)}
-                      className="px-4 py-2 sm:py-2.5 rounded-full text-xs font-accent font-semibold tracking-wider uppercase text-astro-midnight bg-gold-gradient shadow-sm hover:shadow-goldGlow hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                {/* Bottom CTA */}
+                <div className="mt-4 sm:mt-8 pt-3 sm:pt-4 border-t border-astro-border/30 flex items-center gap-2">
+                  {service.slug === 'astrology-education-classes' && (
+                    <a
+                      href={getClassesWhatsAppUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3.5 py-2 sm:py-2.5 rounded-full text-xs font-accent font-semibold tracking-wider text-white bg-[#25D366] hover:bg-[#20BA5A] shadow-md hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5 shrink-0"
+                      title="Enquire on WhatsApp"
                     >
-                      <span>{Number(service.price) > 0 ? 'Book Now' : 'Enquire Fees'}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
+                      <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                      <span>WhatsApp</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={() => openBookingForService(service.id, service.title)}
+                    className="flex-1 px-4 py-2 sm:py-2.5 rounded-full text-xs font-accent font-semibold tracking-wider uppercase text-astro-midnight bg-gold-gradient shadow-sm hover:shadow-goldGlow hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-1.5"
+                  >
+                    <span>{service.slug === 'astrology-education-classes' ? 'Enquire Now' : 'Book Now'}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </motion.div>
             );

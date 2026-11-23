@@ -23,7 +23,19 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const validated = serviceSchema.safeParse(body);
+    const normalizedBody = {
+      ...body,
+      shortDescription: body.shortDescription ?? body.short_description ?? '',
+      imageUrl: body.imageUrl ?? body.image_url ?? '',
+      price: body.price ?? 0,
+      currency: body.currency ?? 'INR',
+      durationMinutes: body.durationMinutes ?? body.duration_minutes ?? 45,
+      consultationMethod: body.consultationMethod ?? body.consultation_method ?? 'Online Video / Voice Call',
+      displayOrder: body.displayOrder ?? body.display_order ?? 0,
+      isActive: body.isActive ?? body.is_active ?? true,
+      isFeatured: body.isFeatured ?? body.is_featured ?? false,
+    };
+    const validated = serviceSchema.safeParse(normalizedBody);
 
     if (!validated.success) {
       return NextResponse.json({ error: 'Validation failed', issues: validated.error.issues }, { status: 400 });

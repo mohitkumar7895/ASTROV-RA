@@ -280,7 +280,7 @@ export function BookingForm({
                 <option value="" className="bg-[#0C1433] text-white">Select an Astrology Service</option>
                 {services.map((s) => (
                   <option key={s.id} value={s.id} className="bg-[#0C1433] text-white">
-                    {s.title} ({s.currency} {s.price})
+                    {s.title}
                   </option>
                 ))}
               </select>

@@ -16,7 +16,6 @@ import {
   X,
 } from 'lucide-react';
 import { AstrologyService } from '@/types';
-import { formatCurrency } from '@/lib/utils';
 import { ImageUpload } from '@/components/admin/ImageUpload';
 
 interface Props {
@@ -36,8 +35,6 @@ export function ServicesManagerClient({ initialServices }: Props) {
       short_description: '',
       description: '',
       icon: 'Sparkles',
-      price: 2500,
-      currency: 'INR',
       duration_minutes: 45,
       consultation_method: 'Online Video / Voice Call',
       display_order: services.length + 1,
@@ -130,7 +127,7 @@ export function ServicesManagerClient({ initialServices }: Props) {
             Astrology Services Management
           </h2>
           <p className="text-astro-slate text-xs mt-0.5">
-            Configure pricing, consultation methods, active status, and homepage features.
+            Configure consultation methods, durations, active status, and homepage features.
           </p>
         </div>
 
@@ -150,7 +147,6 @@ export function ServicesManagerClient({ initialServices }: Props) {
             <tr className="border-b border-astro-border/40 text-[11px] font-accent uppercase tracking-wider text-astro-slate">
               <th className="py-3 px-3">Order</th>
               <th className="py-3 px-3">Service Title</th>
-              <th className="py-3 px-3">Price</th>
               <th className="py-3 px-3">Duration</th>
               <th className="py-3 px-3">Method</th>
               <th className="py-3 px-3">Featured</th>
@@ -171,9 +167,6 @@ export function ServicesManagerClient({ initialServices }: Props) {
                   <div className="text-[10px] text-astro-slate font-mono">
                     /{srv.slug}
                   </div>
-                </td>
-                <td className="py-3.5 px-3 font-semibold text-astro-gold">
-                  {formatCurrency(srv.price, srv.currency)}
                 </td>
                 <td className="py-3.5 px-3 text-astro-slate">
                   {srv.duration_minutes} Mins
@@ -277,19 +270,6 @@ export function ServicesManagerClient({ initialServices }: Props) {
 
                 <div>
                   <label className="block text-xs font-accent uppercase tracking-wider text-astro-slate mb-1.5">
-                    Honorarium / Price (INR)
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    value={editingService?.price || 0}
-                    onChange={(e) => setEditingService({ ...editingService, price: Number(e.target.value) })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-accent uppercase tracking-wider text-astro-slate mb-1.5">
                     Duration (Minutes)
                   </label>
                   <input
@@ -297,18 +277,6 @@ export function ServicesManagerClient({ initialServices }: Props) {
                     min="5"
                     value={editingService?.duration_minutes || 45}
                     onChange={(e) => setEditingService({ ...editingService, duration_minutes: Number(e.target.value) })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-accent uppercase tracking-wider text-astro-slate mb-1.5">
-                    Consultation Method
-                  </label>
-                  <input
-                    type="text"
-                    value={editingService?.consultation_method || 'Online Video / Voice Call'}
-                    onChange={(e) => setEditingService({ ...editingService, consultation_method: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
                   />
                 </div>
@@ -332,6 +300,18 @@ export function ServicesManagerClient({ initialServices }: Props) {
                     <option value="Flame">Flame (Puja Vidhan)</option>
                     <option value="Sparkles">Sparkles (General)</option>
                   </select>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-accent uppercase tracking-wider text-astro-slate mb-1.5">
+                    Consultation Method
+                  </label>
+                  <input
+                    type="text"
+                    value={editingService?.consultation_method || 'Online Video / Voice Call'}
+                    onChange={(e) => setEditingService({ ...editingService, consultation_method: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
+                  />
                 </div>
               </div>
 
