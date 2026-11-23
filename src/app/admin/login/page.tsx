@@ -128,16 +128,6 @@ export default function AdminLoginPage() {
               )}
             </button>
           </form>
-
-          {/* Seed credentials hint for first-time access */}
-          <div className="mt-6 pt-5 border-t border-astro-border/30 text-center">
-            <p className="text-[11px] text-astro-slate font-accent">
-              Default Seed Email: <strong className="text-astro-gold">admin@astrovera.com</strong>
-            </p>
-            <p className="text-[10px] text-astro-slate/80 font-accent mt-0.5">
-              Default Password: <code className="text-astro-ivory">Admin@Astro2026!</code>
-            </p>
-          </div>
         </div>
       </div>
     </div>
