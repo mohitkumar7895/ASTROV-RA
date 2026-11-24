@@ -15,6 +15,7 @@ import {
   Share2,
   AlertTriangle,
 } from 'lucide-react';
+import { siteConfig } from '@/config/site';
 
 interface Props {
   initialSettings: Record<string, string>;
@@ -254,7 +255,7 @@ export function SettingsManagerClient({ initialSettings }: Props) {
               </label>
               <input
                 type="url"
-                value={settings.instagram_url || 'https://instagram.com/astrovera.official'}
+                value={settings.instagram_url || siteConfig.links.instagram}
                 onChange={(e) => handleChange('instagram_url', e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
               />
@@ -266,7 +267,7 @@ export function SettingsManagerClient({ initialSettings }: Props) {
               </label>
               <input
                 type="url"
-                value={settings.facebook_url || 'https://facebook.com/astrovera.official'}
+                value={settings.facebook_url || siteConfig.links.facebook}
                 onChange={(e) => handleChange('facebook_url', e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
               />
@@ -278,7 +279,7 @@ export function SettingsManagerClient({ initialSettings }: Props) {
               </label>
               <input
                 type="url"
-                value={settings.youtube_url || 'https://youtube.com/@astrovera'}
+                value={settings.youtube_url || siteConfig.links.youtube}
                 onChange={(e) => handleChange('youtube_url', e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-astro-midnight border border-astro-border focus:border-astro-gold text-astro-ivory text-sm focus:outline-none"
               />

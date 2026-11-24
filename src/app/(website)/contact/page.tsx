@@ -22,6 +22,7 @@ import {
 import { SectionHeader } from '@/components/common/SectionHeader';
 import { BookingForm } from '@/components/forms/BookingForm';
 import { getAstrologerWhatsApp } from '@/lib/whatsapp';
+import { siteConfig } from '@/config/site';
 
 export const revalidate = 0;
 
@@ -54,6 +55,9 @@ export default async function ContactPage() {
     'https://maps.google.com/?q=Mira+Road+East+Shanti+Garden+Cluster+3+Mumbai+401107';
 
   const whatsappUrl = getAstrologerWhatsApp();
+  const instagramUrl = settings.instagram_url || siteConfig.links.instagram;
+  const facebookUrl = settings.facebook_url || siteConfig.links.facebook;
+  const youtubeUrl = settings.youtube_url || siteConfig.links.youtube;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-12">
@@ -186,7 +190,7 @@ export default async function ContactPage() {
                   <MessageCircle className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://instagram.com/astrovera.official"
+                  href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-astro-border bg-astro-midnight flex items-center justify-center text-astro-gold hover:scale-105 transition-all"
@@ -195,7 +199,7 @@ export default async function ContactPage() {
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://facebook.com/astrovera.official"
+                  href={facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-astro-border bg-astro-midnight flex items-center justify-center text-astro-gold hover:scale-105 transition-all"
@@ -204,7 +208,7 @@ export default async function ContactPage() {
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://youtube.com/@astrovera"
+                  href={youtubeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-astro-border bg-astro-midnight flex items-center justify-center text-astro-gold hover:scale-105 transition-all"

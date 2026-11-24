@@ -54,7 +54,10 @@ INSERT INTO `website_settings` (`setting_key`, `setting_value`, `category`) VALU
 ('maintenance_mode', 'false', 'features'),
 ('google_analytics_id', '', 'analytics'),
 ('footer_copyright', '© 2026 ASTROVÈRA. All Rights Reserved. Crafted for Conscious Souls.', 'footer'),
-('footer_description', 'ASTROVÈRA blends ancient Vedic wisdom with modern life strategy. Guided by Pandit Puneet Dwivedi, we illuminate paths through career transitions, relationship harmony, and inner purpose.', 'footer')
+('footer_description', 'ASTROVÈRA blends ancient Vedic wisdom with modern life strategy. Guided by Pandit Puneet Dwivedi, we illuminate paths through career transitions, relationship harmony, and inner purpose.', 'footer'),
+('instagram_url', 'https://www.instagram.com/babamarketingfrendo?gwpx=NTFkMHdrcnI3NDQ1', 'social'),
+('facebook_url', 'https://www.facebook.com/profile.php?id=61596413717222', 'social'),
+('youtube_url', 'https://www.youtube.com/@BabaMarketing-ev-frendo', 'social')
 ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
 
 -- 6. HERO SECTIONS
@@ -164,9 +167,9 @@ INSERT INTO `enquiry_notes` (`enquiry_id`, `admin_id`, `admin_name`, `note`, `cr
 -- 14. SOCIAL LINKS
 INSERT INTO `social_links` (`id`, `platform`, `display_name`, `url`, `icon`, `is_active`, `display_order`) VALUES
 (1, 'whatsapp', 'WhatsApp', 'https://wa.me/919630620240', 'MessageCircle', 1, 1),
-(2, 'instagram', 'Instagram', 'https://instagram.com/astrovera.official', 'Instagram', 1, 2),
-(3, 'facebook', 'Facebook', 'https://facebook.com/astrovera.official', 'Facebook', 1, 3),
-(4, 'youtube', 'YouTube', 'https://youtube.com/@astrovera', 'Youtube', 1, 4)
+(2, 'instagram', 'Instagram', 'https://www.instagram.com/babamarketingfrendo?gwpx=NTFkMHdrcnI3NDQ1', 'Instagram', 1, 2),
+(3, 'facebook', 'Facebook', 'https://www.facebook.com/profile.php?id=61596413717222', 'Facebook', 1, 3),
+(4, 'youtube', 'YouTube', 'https://www.youtube.com/@BabaMarketing-ev-frendo', 'Youtube', 1, 4)
 ON DUPLICATE KEY UPDATE `url` = VALUES(`url`);
 
 -- 15. SEO METADATA FOR ALL SIX PUBLIC PAGES

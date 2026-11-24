@@ -23,8 +23,8 @@ export const siteConfig = {
       "https://maps.google.com/?q=Mira+Road+East+Shanti+Garden+Cluster+3+Mumbai+401107",
   },
   links: {
-    instagram: "https://instagram.com/astrovera.official",
-    facebook: "https://facebook.com/astrovera.official",
-    youtube: "https://youtube.com/@astrovera",
+    instagram: "https://www.instagram.com/babamarketingfrendo?gwpx=NTFkMHdrcnI3NDQ1",
+    facebook: "https://www.facebook.com/profile.php?id=61596413717222",
+    youtube: "https://www.youtube.com/@BabaMarketing-ev-frendo",
   },
 };

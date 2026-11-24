@@ -17,6 +17,7 @@ import {
   Lock,
 } from 'lucide-react';
 import { publicNavItems } from '@/config/navigation';
+import { siteConfig } from '@/config/site';
 import { useApp } from '@/context/AppContext';
 import { getAstrologerWhatsApp } from '@/lib/whatsapp';
 
@@ -33,6 +34,9 @@ export function Footer() {
     settings.footer_copyright ||
     '© 2026 ASTROVÈRA. All Rights Reserved. Crafted for Conscious Souls.';
   const whatsappUrl = getAstrologerWhatsApp();
+  const instagramUrl = settings.instagram_url || siteConfig.links.instagram;
+  const facebookUrl = settings.facebook_url || siteConfig.links.facebook;
+  const youtubeUrl = settings.youtube_url || siteConfig.links.youtube;
 
   return (
     <footer className="relative bg-[#050817] text-astro-ivory pt-8 pb-6 sm:pt-14 sm:pb-10 lg:pt-16 lg:pb-12 overflow-hidden z-10">
@@ -185,7 +189,7 @@ export function Footer() {
                 <MessageCircle className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com/astrovera.official"
+                href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-astro-border bg-astro-navy flex items-center justify-center text-astro-gold hover:bg-astro-gold hover:text-astro-midnight transition-all"
@@ -194,7 +198,7 @@ export function Footer() {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://facebook.com/astrovera.official"
+                href={facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-astro-border bg-astro-navy flex items-center justify-center text-astro-gold hover:bg-astro-gold hover:text-astro-midnight transition-all"
@@ -203,7 +207,7 @@ export function Footer() {
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href="https://youtube.com/@astrovera"
+                href={youtubeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-astro-border bg-astro-navy flex items-center justify-center text-astro-gold hover:bg-astro-gold hover:text-astro-midnight transition-all"
